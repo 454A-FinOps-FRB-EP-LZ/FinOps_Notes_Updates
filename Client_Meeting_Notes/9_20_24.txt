@@ -1,0 +1,22 @@
+Questions leading into this meeting are (prior to the meeting):
+1. What is docker / what are containers?
+2. How to set up localstack (ec2 cluster, scaling)?
+3. What are the built in libraries used for cpu manipulation in python?
+4. What are the differences between using ec2 and lambda for the project?
+5. What are the differences between the UI, CLI, and Terraform?
+
+Meeting notes (during the meeting):
+1. Docker is a good way to leverage code to create an image of operating systems. (Justin uses docker to run linux on a windows computer--similar to a vm)
+2. Priorities would be:
+      a. Figuring out AWS CLI with localstack as this is a step in between the local stack UI and using terraform.
+      b. Set up an EC2 cluster with AWS CLI.
+      c. Read into the multiprocessing & os python libraries.
+      d. Make more progress on the flask REST APIs.
+
+Other notes of importance and lingering questions (after the meeting): 
+      a. EC2 is used over lambda because lambda hides the scaling policies by applying them automatically.
+      b. Create two EC2 clusters one for each API (one cluster for CPU testing, one cluster for memory testing).
+      c. How do we put our code files onto the EC2 instance?
+            c_i. Can we SSH into the instance and use sftp for file transferring?
+            c_ii. You mentioned using either gitlab or github (can we get a clarification because we forgot to note it down). And if we were to use github, would be just clone the repo onto the instance after ssh-ing in to the localstack instance.
+            c_iii. How can we install python in the localstack EC2 instance?
