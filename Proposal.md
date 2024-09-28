@@ -2,32 +2,40 @@
 
 ## Section 1: Overview
 
-This project aims to create an E2E (end-to-end) solution that deploys two small applications into a cloud environment. The goal of this project is to introduce the core principles of FinOps along with the best practices in architecture and performance testing that are carried out in industry. This E2E solution will include:
+This project aims to create an E2E (end-to-end) solution that deploys two small applications into a cloud environment while leveraging FinOps principles to optimize cost and performance management. The goal of this project is to introduce the core principles of FinOps along with the best practices in cloud architecture, performance testing, and resource scaling that are carried out in industry. This E2E solution will include:
 
-1. An EC2 cluster that starts with a minimum number of instances and scales up to a maximum based on auto-scaling rules.
-2. Two RESTful APIs that consume a certain percentage of CPU capability or memory amount respetively.
+1. Two RESTful APIs that consume a certain percentage of CPU capability or memory amount respetively.
+2. An EC2 cluster that starts with a minimum number of instances and scales up to a maximum based on auto-scaling rules.
+3. Proving the auto scaling rules and evaluates resource usage through a scalability test and the stability through a soak test.
 
+More details on each of the above will be provided in the project requirements section below.
 
+## Client
 
-This project is being developed 
+This project is proposed by Justin Ohrenberger, Senior Manager of Cloud Platform Engineering Team at Federal Reserve Bank of St. Louis (justin.ohrenberger@stls.frb.org)
 
-Construct an end-to-end solution that deploys two applications to
-local machine cloud environment leveraging Infrastructure as Code
-technology (e.g. Terraform)
-• The applications will be API only and do the following
-• Application 1: Detect memory amount of machine running and randomly select
-consuming 5/10/15/25/35 percent
-• Application 2: Detect CPU capability of machine running and randomly select
-consuming 5/10/15/25/35 percent
-• Construct performance tests to determine peak usage capabilities
-• Construct soak test to determine ensure stability over a period of 10
-minutes at peak rate
-• Leverage the scaling scenarios to tune the testing models and scaling
-strategy for the applications
+## Section 2: Project requirements
+A minimal viable solution for this project includes two working RESTful APIs, a scalable EC2 cluster that demonstrates scalability and stability by passing the performance tests. 
 
-This project aims to create a chatbot for answering questions related to CSE 332S: Object-oriented software development. This course is offered at WashU as part of the Computer Science and Engineering department and is a required course for all CS majors and minors. The goal of the project is to give students access to a resource for getting help quickly, even if that help may not be perfect. The chatbot will include:
+#### Minimum equirements for the RESTful APIs:
+1. first RESTful API (memory): is able to detect memory amount of machine running and randomly select consuming 5/10/15/25/35 percent and simulate stress on the system by the random allocation of memory
+2. second RESTful API (CPU): is able to detect CPU capability of machine running and randomly select consuming 5/10/15/25/35 percent and simulate stress on the system by the random allocation of CPU
+3. deployable onto an EC2 instance to initiate testing on the cloud
 
-a student facing user interface (likly a web based fron-end), allowing students to submit questions to the chatbot.
-a large language model trained on course resources including past piazza posts, course lecture videos, and course recitation recordings.
-a RestAPI that connects the user to the chatbot, allowing user questions to be submitted and answers returned.
-More details on will be provided regarding each of the above in section 3.
+Additional features worth considering if time permits:
+1. establish integration between the CPU API and the Memory API
+2. redesign the scability rules accordingly given any shift in performance or demand toleration
+
+### Minimum requirements for the EC2 cluster
+1. deployed onto AWS with a minimum number of instances which scale up to a maximum number of instances
+2. leverages AWS CLI when working with EC2 instances and Infrastructure as Code technology (e.g. Terraform)
+3. implemented with auto-scaling policies for the EC2 instances based on performance metrics formed via (CPU or memory load)
+
+### Minimum requirements for the Auto Scaling rules
+1. configured to automatically scale based on resource usage thresholds.
+2. can scale both up and down
+3. are able to pass load tests; these test the scalability of the rules and whether they can handle different amounts of load
+4. are able to pass soak tests; these test the stability of the scaling and whether they can within stand high load for an extended duration of time
+
+## additional features beyond the three pieces above if time permits
+Latency and fault tolerance: Establish a failover strategy for transactions that fail during peak testing that prevents lost of business due to high demand leveraging a queue driven structure (e.g. Netflix Hystrix)
