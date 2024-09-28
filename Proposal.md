@@ -41,6 +41,28 @@ Additional features worth considering if time permits:
 Latency and fault tolerance: Establish a failover strategy for transactions that fail during peak testing that prevents lost of business due to high demand leveraging a queue driven structure (e.g. Netflix Hystrix)
 
 ## Technologies required/used for development
-1. Version control - git and github.com will be used for manageing the codebase
-2. Issue tracking - github issues will be used for planning and tracking rogress on project development
-3. other technologies TBD based on further research
+1. Version control: Git and GitHub will be the tools used for version tracking and uploading changes to the source code
+2. Issue tracking: The Issues feature on GitHub will be the tool used for setting the goals and bringing up problems during the development process.
+3. Any other technologies will be determined over the course of the project
+
+## Product testing
+
+### RESTful APIs testing
+The way in which the RESTful APIs will be tested after their deployment in an EC2 instance will involve using a unit testing framework that will check that the two API routes defined can be used for their intended functions and that they are both returning the correct status code.
+
+### EC2 cluster testing
+The way in which the EC2 cluster will be tested after its deployment will involve using the fully functional RESTful APIs to check that the auto-scaling rules defined are responding appropriately to different stress levels of CPU and memory usage by creating or terminating different numbers of EC2 instances.
+
+### Auto-scaling rules testing
+The way in which the auto-scaling rules will be tested after their deployment for the EC2 cluster will involve analyzing their capability of scaling up and down according to different previously defined resource usage threshold and also assessing and endurance through several load tests and soak tests of varying degrees of strain.
+
+## Estimated development timeline
+1. Finishing the development of the RESTful APIs and running them through unit tests locally (weeks 1-2)
+2. Creating an EC2 instance for deploying the RESTful APIs and starting to study how to define the auto-scaling rules through the AWS CLI and Terraform (weeks 1-2)
+3. Deploying the RESTful APIs on the EC2 instance created and using the two API routes defined to run unit tests for each endpoint (weeks 3-4)
+4. Creating an EC2 cluster for the future performance tests and starting to configure the auto-scaling rules for the previously defined resource usage thresholds (weeks 5-6)
+5. Finishing configuring the auto-scaling rules for the EC2 cluster and starting to conduct load and soak tests to assess their performance (weeks 7-8)
+6. Conducting more exhaustive load and soak tests for the EC2 cluster and implementing the necessary optimizations to the auto-scaling rules to create a reliable and stable E2E solution (week 9)
+
+## Transfering deliverables to the client
+After starting communications with the client, we created a GitHub organization where we have different repositories that we are going to continue using during the upcoming weeks while working on this project. The client has already been added to this organization and has full access to all of our commits. At the conclusion of the project, we will transfer the ownership of this organization to the client, which will additionally transfer ownership of all the repositories stored within to him as well.
