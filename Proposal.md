@@ -39,3 +39,8 @@ Additional features worth considering if time permits:
 
 ## additional features beyond the three pieces above if time permits
 Latency and fault tolerance: Establish a failover strategy for transactions that fail during peak testing that prevents lost of business due to high demand leveraging a queue driven structure (e.g. Netflix Hystrix)
+
+## Technologies required/used for development
+1. Version control - git and github.com will be used for manageing the codebase
+2. Issue tracking - github issues will be used for planning and tracking rogress on project development
+3. other technologies TBD based on further research
