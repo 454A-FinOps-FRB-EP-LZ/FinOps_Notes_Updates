@@ -17,7 +17,7 @@ This project is proposed by Justin Ohrenberger, Senior Manager of Cloud Platform
 ## Section 2: Project requirements
 A minimal viable solution for this project includes two working RESTful APIs, a scalable EC2 cluster that demonstrates scalability and stability by passing the performance tests. 
 
-#### Minimum equirements for the RESTful APIs:
+### Minimum equirements for the RESTful APIs:
 1. first RESTful API (memory): is able to detect memory amount of machine running and randomly select consuming 5/10/15/25/35 percent and simulate stress on the system by the random allocation of memory
 2. second RESTful API (CPU): is able to detect CPU capability of machine running and randomly select consuming 5/10/15/25/35 percent and simulate stress on the system by the random allocation of CPU
 3. deployable onto an EC2 instance to initiate testing on the cloud
@@ -37,7 +37,7 @@ Additional features worth considering if time permits:
 3. are able to pass load tests; these test the scalability of the rules and whether they can handle different amounts of load
 4. are able to pass soak tests; these test the stability of the scaling and whether they can within stand high load for an extended duration of time
 
-## additional features beyond the three pieces above if time permits
+## Additional features beyond the three pieces above if time permits
 Latency and fault tolerance: Establish a failover strategy for transactions that fail during peak testing that prevents lost of business due to high demand leveraging a queue driven structure (e.g. Netflix Hystrix)
 
 ## Technologies required/used for development
