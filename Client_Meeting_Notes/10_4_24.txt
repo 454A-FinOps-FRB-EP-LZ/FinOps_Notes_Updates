@@ -1,1 +1,23 @@
 
+Questions leading into this meeting are (prior to the meeting):
+1. How can we SSH into an EC2 instance for which we didn't generate a key-value pair?
+2. Should we create a security group with rules explicitly defined for SSH and HTTP?
+3. What functionalities do IAM and SSM provide us when interacting with the instances?
+4. Do we clone the github repo via git commands from python?
+
+Meeting notes (during the meeting):
+1. We don't need to create rules explicitly defined for SSH and HTTP because the default security group already accepts connections from any IP address
+2. When we don't have a key-value pair, we can access an EC2 instance by defining an IAM role for it and then creating a new session with SSM
+3. Priorities would be:
+      a. Working on creating an EC2 instance that is able to run Python to host our APIs
+      b. Test the functionality of the APIs when calling them with an HTTP route.
+      d. Figuring out terraform since we've already explored AWS CLI as a way to interact with the ec2 instances.
+      e. Start thinking about performance tests.
+
+Other notes of importance and lingering questions (after the meeting):
+      a. Connecting to an EC2 instance by creating a new session with SSM is the safest way to interact with an instance
+      b. Creating a new session with SSM is a method for connecting to an EC2 instance without a key-value pair
+      c. How can we send?
+            c_i. Can we SSH into the instance and use sftp for file transferring?
+            c_ii. You mentioned using either gitlab or github (can we get a clarification because we forgot to note it down). And if we were to use github, would be just clone the repo onto the instance after ssh-ing in to the localstack instance.
+            c_iii. How can we install python in the localstack EC2 instance?
