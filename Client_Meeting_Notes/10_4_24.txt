@@ -11,13 +11,14 @@ Meeting notes (during the meeting):
 3. Priorities would be:
       a. Working on creating an EC2 instance that is able to run Python to host our APIs
       b. Test the functionality of the APIs when calling them with an HTTP route.
-      d. Figuring out terraform since we've already explored AWS CLI as a way to interact with the ec2 instances.
-      e. Start thinking about performance tests.
+      c. Figuring out terraform since we've already explored AWS CLI as a way to interact with the ec2 instances.
+      d. Start thinking about performance tests.
 
 Other notes of importance and lingering questions (after the meeting):
       a. Connecting to an EC2 instance by creating a new session with SSM is the safest way to interact with an instance
       b. Creating a new session with SSM is a method for connecting to an EC2 instance without a key-value pair
-      c. How can we send?
-            c_i. Can we SSH into the instance and use sftp for file transferring?
-            c_ii. You mentioned using either gitlab or github (can we get a clarification because we forgot to note it down). And if we were to use github, would be just clone the repo onto the instance after ssh-ing in to the localstack instance.
-            c_iii. How can we install python in the localstack EC2 instance?
+      c. How can we send our Python files to the EC2 instance?
+            c_i. Is there a way to set up an SFTP file transfer through SSM?
+            c_ii. Would cloning our GitHub repository in the home directory work through SSM?
+            c_iii. How can we set up SFTP without defining a key pair?
+            c_iv. What tool would we use for doing SFTP--Filezilla or vs code SFTP extension?
