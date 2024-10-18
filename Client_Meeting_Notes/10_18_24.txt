@@ -1,0 +1,22 @@
+Questions leading into this meeting are (prior to the meeting):
+1. Why does sudo cd not work when going into /home/ec2-user?
+2. Why does port 80 not work when using apache?
+3. Are there any risks with updating the permissions of the /home/ec2-user folder?
+4. Is there a way for us to use port 8080 instead of port 80?
+
+Meeting notes (during the meeting):
+1. Apache runs on port 80, so it shows that port 80 is busy when trying to fun flask.
+2. There shouldn't be any problems with updating the premissions of the ec2-user folder.
+3. We can deploy the aws_lb (aws load balancer) on port 8080 instead of port 80 to allow our flask program to run on port 8080 but the main issue was still apache taking up the port.
+4. Priorities would be:
+      a. Writing a script to test the APIs and see how the ALB behaviours respond to the different CPU / Memory levels.
+      b. Setting up auto-scaling rules in terraform according to the youtube video provided by Justin: https://www.youtube.com/watch?v=9Z0heLHN2Xk
+      c. Verify that the aws cluster can scale up and down. 
+            c_i. e.g. once CPU hits 75% or higher, the number of instances increases by one, and vice versa.
+      d. Trying to figure out what gunicorn is. 
+
+Other notes of importance and lingering questions (after the meeting):
+      a. What is gunicorn?
+      b. How do we find the load balancing params for memory tests?
+      c. How long should we be running the tests? 
+      d. On the same note, should we start thinking about soak tests (testing for stability)?

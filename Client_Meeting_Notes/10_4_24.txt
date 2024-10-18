@@ -1,4 +1,3 @@
-
 Questions leading into this meeting are (prior to the meeting):
 1. How can we SSH into an EC2 instance for which we didn't generate a key-value pair?
 2. Should we create a security group with rules explicitly defined for SSH and HTTP?
