@@ -1,0 +1,24 @@
+Questions leading into this meeting are (prior to the meeting):
+1. What is k6 OSS?
+2. How do we test memory on aws scaling tests?
+3. Are we supposed to install a cloudwatch agent on the ec2 to test memory?
+4. How does k6 OSS run its tests?
+
+Meeting notes (during the meeting):
+1. Using cloud agent is the right way to test memory.
+2. k6 OSS does it's tests by simulating user input and page response instead of refreshing a page to send requests.
+3. k6 OSS is able to test both for load and soak.
+4. Priorities would be:
+      a. Talk with Justin about what our final deliverable will look like.
+      b. Updating k6 OSS script with more specific metrics for testing
+      c. Understanding when a request is declined.
+      d. Learn more about CPU / memory API--how long do they run?
+      e. Adjusting the scaling policies (percentages) to avoid requests being declined.
+
+Other notes of importance and lingering questions (after the meeting):
+      a. What causes a request to be dropped?
+      b. What happens when we have 50% cpu running and a new request adds another 50% cpu, would we scale up first or let the first instance receive the request before scaling up a new one?
+      c. Will we keep a request as long as everything is under 100% then scale or scale first then put the request to the new instance? 
+      d. When does an error occur? When the total amount of cpu / memory exceeds the rule?
+      e. How long does the cpu / memory get used when calling the cpu / memory API?
+      f. How do we start looking the scaling with pricing optimization?
