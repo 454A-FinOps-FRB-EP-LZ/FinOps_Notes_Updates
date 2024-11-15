@@ -10,7 +10,7 @@ Meeting notes (during the meeting):
 2. We are just using CPU for a # number of time to simulate CPU usage.
 3. We need to find out what is the breaking point of our scaling rules.
 4. Because we are using EC2 and instances don't scale up instantly, it is hard / impossible to handle a rapid jump from 5 to 20 users--> therefore, we should find the limit at which our scaling breaks.
-4. Priorities would be:
+5. Priorities would be:
       a. Figure out memory ("SC_PAGE_SIZE")
       b. Figure out number of users we can process before our server crashing
       c. Check what byte array is doing in memory script: does it get rid of previous memory?
