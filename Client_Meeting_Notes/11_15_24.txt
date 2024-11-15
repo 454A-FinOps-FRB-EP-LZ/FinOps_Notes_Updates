@@ -1,24 +1,22 @@
 Questions leading into this meeting are (prior to the meeting):
-1. What is k6 OSS?
-2. How do we test memory on aws scaling tests?
-3. Are we supposed to install a cloudwatch agent on the ec2 to test memory?
-4. How does k6 OSS run its tests?
+1. What are some standard parameters we should configure to conduct a soak test or a load test?
+2. Are there any specific metrics we should look for when analyzing the cloud report of a test?
+3. How does dynamic scaling work?
+4. For a real world case of dynamic pricing calculation, would we be utilizing different instances during different hours in response to service requirements and therefore save money by choosing cheaper instances during low request hours?
+5. How is the CPU being used? % of CPU for a certain time or just rapid uses of % CPU? 
 
 Meeting notes (during the meeting):
-1. Using cloud agent is the right way to test memory.
-2. k6 OSS does it's tests by simulating user input and page response instead of refreshing a page to send requests.
-3. k6 OSS is able to test both for load and soak.
+1. If we were to have a better (more multifaceted) API end, we would be able to do more tests.
+2. We are just using CPU for a # number of time to simulate CPU usage.
+3. We need to find out what is the breaking point of our scaling rules.
+4. Because we are using EC2 and instances don't scale up instantly, it is hard / impossible to handle a rapid jump from 5 to 20 users--> therefore, we should find the limit at which our scaling breaks.
 4. Priorities would be:
-      a. Talk with Justin about what our final deliverable will look like.
-      b. Updating k6 OSS script with more specific metrics for testing
-      c. Understanding when a request is declined.
-      d. Learn more about CPU / memory API--how long do they run?
-      e. Adjusting the scaling policies (percentages) to avoid requests being declined.
+      a. Figure out memory ("SC_PAGE_SIZE")
+      b. Figure out number of users we can process before our server crashing
+      c. Check what byte array is doing in memory script: does it get rid of previous memory?
+      d. Is it really touching memory or just allocating it without actually touching it? Are the variables right with the image of our ec2 server?
 
 Other notes of importance and lingering questions (after the meeting):
-      a. What causes a request to be dropped?
-      b. What happens when we have 50% cpu running and a new request adds another 50% cpu, would we scale up first or let the first instance receive the request before scaling up a new one?
-      c. Will we keep a request as long as everything is under 100% then scale or scale first then put the request to the new instance? 
-      d. When does an error occur? When the total amount of cpu / memory exceeds the rule?
-      e. How long does the cpu / memory get used when calling the cpu / memory API?
-      f. How do we start looking the scaling with pricing optimization?
+      a. Our API way of testing the CPU is a simplified way to simulate CPU, can use webservice business calls--one transaction would include multiple APIs and databases.
+      b. We just used a simple way to consume CPU instead of simulating a real transaction that would hit a lot more microservices.
+      c. Specific parameter bounding in k6 is used in industry to enforce industry level requirements, base k6 just tests for passing, industry requires a certain speed.
